@@ -43,7 +43,7 @@ function Nav (){
         id: 'phim-sap-chieu',
         title: 'Phim Sắp Chiếu',
     }];
-    return <div className={cx('wrapper bg-darkbluea h-[50px] flex items-center justify-center')}>
+    return <div className={cx('wrapper bg-darkbluea min-h-[50px] flex items-center justify-center')}>
                <div className={cx('container-main w-[1170px] ')}>
                     <ul className={cx('inner flex text-sm')}>
                          {menus.map((menu,index)=> (
