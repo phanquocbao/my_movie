@@ -4,3 +4,11 @@
 .container-main {
     max-width: 1170px;
 }
+
+ul.dropdown{
+    display: none;
+}
+
+.menu:hover ul.dropdown{
+    display: block;
+}
