@@ -8,16 +8,20 @@ export const menuItems = [
         title : 'Thể Loại',
         submenu: [
         {
+            url:"huyen-huyen",
             title: "Huyền Huyễn",
         },
         {
+            url:"xuyen-khong",
             title: "Xuyên không",
         },
         {
+            url:"trung-sinh",
             title: "Trùng sinh",
         },
         {
             title: "Tiên hiệp",
+            url:"tien-hiep",
         },
         ]
     },

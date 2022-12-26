@@ -22,14 +22,14 @@ function Header() {
           <div className={cx("col-span-1 col-start-11 col-end-13 ")}>
             <div
               className={cx(
-                "get-bookmark flex items-center text-sm bg-gradient-to-r from-cyan-500 to-blue-500 box-shadow leading-5 text-white px-1 py-1 rounded-2xl "
+                "get-bookmark"
               )}
             >
               <i class="hl-bookmark"></i>
               <span> Phim yêu thích</span>
               <span
                 className={cx(
-                  "count ml-2 px-1 text-xl pl-1 bg-red-600 rounded-2xl"
+                  "count"
                 )}
               >
                 0
