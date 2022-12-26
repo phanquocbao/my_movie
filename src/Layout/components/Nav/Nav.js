@@ -1,8 +1,7 @@
 import classNames from "classnames/bind";
 import styles from "./Nav.module.scss";
-import { Link } from "react-router-dom";
-import { MenuItems } from "./MenuItems";
-import Dropdown from "./Dropdown";
+import { menuItems } from "../menuItems";
+import MenuItems from "./MenuItems";
 const cx = classNames.bind(styles);
 function Nav() {
   return (
@@ -13,23 +12,18 @@ function Nav() {
     >
       <div className={cx("container-main w-[1170px] ")}>
         <nav>
-          <ul className={cx("inner menu flex text-sm relative")}>
-            {MenuItems.map((menu, index) => (
-              <li className={cx("")} key={menu.id}>
-                {" "}
-                <Link
-                  title={menu.title}
-                  className={cx(
-                    "text-white block transition ease-in-out delay-80 py-4 px-4 hover:bg-black hover:text-cyan-400"
-                  )}
-                  to={`/${menu.id}`}
-                >
-                  {menu.title}
-                  <Dropdown />
-                </Link>
-              </li>
-            ))}
-          </ul>
+        <ul className="menus flex text-sm">
+        {menuItems.map((menu, index) => {
+          const depthLevel = 0;
+          return (
+            <MenuItems
+              items={menu}
+              key={index}
+              depthLevel={depthLevel}
+            />
+          );
+        })}
+      </ul>
         </nav>
       </div>
     </div>
