@@ -21,6 +21,7 @@ function Home() {
       episode : "Tập 14",
       src: '../../Assets/Images/tinh-vuc-4-van-nam.jpg',
       url:'tinh-vuc-4-van-nam',
+      viewsCount: "14.3K lượt xem",
     },
     {
       id:2,
@@ -29,6 +30,7 @@ function Home() {
       episode : "Tập 122",
       src: '../../Assets/Images/linh-kiem-ton.jpg',
       url:'linh-kiem-ton',
+      viewsCount: "14.3K lượt xem",
     },
     {
       id:3,
@@ -37,6 +39,7 @@ function Home() {
       episode : "Tập 200",
       src: '../../Assets/Images/nghich-thien-chi-ton.png',
       url:'nghich-thien-chi-ton',
+      viewsCount: "14.3K lượt xem",
     },
     {
       id:4,
@@ -45,6 +48,7 @@ function Home() {
       episode : "Tập 30",
       src: '../../Assets/Images/van-co-than-thoai.jpg',
       url:'van-co-than-thoai',
+      viewsCount: "14.3K lượt xem",
     },
     {
       id:5,
@@ -53,6 +57,7 @@ function Home() {
       episode : "Tập 210",
       src: '../../Assets/Images/vo-than-chua-te.jpg',
       url:'vo-than-chua-te',
+      viewsCount: "14.3K lượt xem",
     },
     {
       id:6,
@@ -61,6 +66,7 @@ function Home() {
       episode : "Tập 14",
       src: '../../Assets/Images/ta-tai-tien-gioi-kiem-diem-tich-luy.jpg',
       url:'ta-tai-tien-gioi-kiem-diem-tich-luy',
+      viewsCount: "14.3K lượt xem",
     },
     {
       id:7,
@@ -69,6 +75,7 @@ function Home() {
       episode : "Tập 14",
       src: '../../Assets/Images/tinh-vuc-4-van-nam.jpg',
       url:'tinh-vuc-4-van-nam',
+      viewsCount: "14.3K lượt xem",
     },
     {
       id:8,
@@ -77,6 +84,7 @@ function Home() {
       episode : "Tập 14",
       src: '../../Assets/Images/tinh-vuc-4-van-nam.jpg',
       url:'tinh-vuc-4-van-nam',
+      viewsCount: "14.3K lượt xem",
     },
     {
       id:9,
@@ -85,6 +93,7 @@ function Home() {
       episode : "Tập 14",
       src: '../../Assets/Images/tinh-vuc-4-van-nam.jpg',
       url:'tinh-vuc-4-van-nam',
+      viewsCount: "14.3K lượt xem",
     },
     {
       id:10,
@@ -93,6 +102,7 @@ function Home() {
       episode : "Tập 122",
       src: '../../Assets/Images/linh-kiem-ton.jpg',
       url:'linh-kiem-ton',
+      viewsCount: "14.3K lượt xem",
     },
     {
       id:11,
@@ -101,6 +111,7 @@ function Home() {
       episode : "Tập 200",
       src: '../../Assets/Images/nghich-thien-chi-ton.png',
       url:'nghich-thien-chi-ton',
+      viewsCount: "14.3K lượt xem",
     },
     {
       id:12,
@@ -109,6 +120,7 @@ function Home() {
       episode : "Tập 30",
       src: '../../Assets/Images/van-co-than-thoai.jpg',
       url:'van-co-than-thoai',
+      viewsCount: "14.3K lượt xem",
     },
 
   ];
@@ -117,7 +129,7 @@ function Home() {
       <div className={cx("item-content-img")}>
         <img src="../../Assets/Images/than-an-vuong-toa-poster.jpg" alt="..." />
         <div className={cx("slide-text bg-black text-white px-4 text-base")}>
-          <h3 className="slider-title">Than an vuong toa</h3>
+          <h3 className="slider-title">Thần ấn vương tọa</h3>
           <div className="slider-meta hidden-xs">
             <p>[Elevation to the Status of a God]</p>
           </div>
@@ -139,7 +151,6 @@ function Home() {
                      title={movie.title}
                    />
                  </figure>
-                 <span className="status">HD</span>
                  <span class="episode">{movie.episode}</span>
                  <div className="icon_overlay"></div>
                  <div className="list-movie-title-box">
