@@ -12,9 +12,9 @@ function DefaultLayout({children}){
             <Header />
             <Nav />
            <div className={cx('flex justify-center')}>
-               <div className={cx('w-[1170px]')}>
+               <div className={cx('w-[1170px] content')}>
                     <div className={cx('grid grid-cols-12')}>
-                        <div className={cx('content col-start-1 col-end-9')}>
+                        <div className={cx('col-start-1 col-end-9')}>
                                 {children}
                         </div>
                          <Sidebar />

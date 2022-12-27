@@ -11,50 +11,55 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import ListMovie from "../../../Compents/ListMovie/ListMovie";
 
-
 const cx = classNames.bind(styles);
 function Search() {
-  const [searchResult, setSearchResult] = useState([])
-  const [searchValue, setSearchValue ] = useState ('');
-  const [showResult, setShowResult]  = useState(true);
+  const [searchResult, setSearchResult] = useState([]);
+  const [searchValue, setSearchValue] = useState("");
+  const [showResult, setShowResult] = useState(true);
+  const [loading, setLoading] = useState(false);
 
-    useEffect(()=>{
-        if(!searchValue.trim()) {
-            return;
-        }
-       fetch(`https://api.themoviedb.org/3/search/multi?api_key=bef653f66382a57bb4e7f51c9ca67648&query=bb`)
-        .then( res => res.json())
-        .then(res =>{
-                setSearchResult(res.results);
-        })
-    },[searchValue]);
+  useEffect(() => {
+    if (!searchValue.trim()) {
+      return;
+    }
+    setLoading(true)
+    fetch(
+      `https://api.themoviedb.org/3/search/multi?api_key=bef653f66382a57bb4e7f51c9ca67648&query=${encodeURIComponent(searchValue)}`
+    )
+      .then((res) => res.json())
+      .then((res) => {
+        setSearchResult(res.results);
+        setLoading(false);
+      })
+      .catch(()=> {
+        setLoading(false)
+      })
+  }, [searchValue]);
 
-    const handleHideResult  = () => {
-        setShowResult(false)
-    };
+  const handleHideResult = () => {
+    setShowResult(false);
+  };
 
   return (
     <Tippy
-        // value={searchValue}
-        placement="bottom"
-        interactive
-         visible={ showResult && searchResult.length > 0}
-        render={(attrs) => (
-            <div className={cx("search-result")} tabIndex="-1" {...attrs}>
-            <ul className={cx("list-search-result")}>
-                <li>
-                Kết quả tìm kiếm: <strong>test</strong>
-                </li>
-               {/* {searchResult.map((result)=>(
-                  <ListMovie key={result.id} data={result} />
-                  ))} */}
-                  <ListMovie />
-                  <ListMovie />
-                  <ListMovie />
-                  <ListMovie />
-
-            </ul>
-            </div>
+     content="Nhan Enter de tim kiem"
+      value={searchValue}
+      placement="bottom"
+      interactive
+      visible={showResult && !!searchResult && searchResult.length > 0}
+      render={(attrs) => (
+        <div className={cx("search-result")} tabIndex="-1" {...attrs}>
+          <ul className={cx("list-search-result")}>
+            <li>
+              Kết quả tìm kiếm: <strong>{searchValue}</strong>
+            </li>
+            {Array.isArray(searchResult) &&
+                searchResult.map((result) => (
+              <ListMovie key={result.id} data={result} />
+            ))}
+            {console.log(111, searchResult)}
+          </ul>
+        </div>
       )}
       onClickOutside={handleHideResult}
     >
@@ -63,11 +68,11 @@ function Search() {
           className={cx("input")}
           type="search"
           placeholder="Search with Tìm kiếm movie..."
-          required
-          onChange={(e)=> setSearchValue(e.target.value)}
-          onFocus={()=> setSearchResult(true)}
+          spellCheck={false}
+          onChange={(e) => setSearchValue(e.target.value)}
+          onFocus={() => setSearchResult(true)}
         />
-        <FontAwesomeIcon className={cx("loading")} icon={faSpinner} />
+        {loading && <FontAwesomeIcon className={cx("loading")} icon={faSpinner} />}
         <button className={cx("search-btn")}>
           <FontAwesomeIcon icon={faMagnifyingGlass} />
         </button>
