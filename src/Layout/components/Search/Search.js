@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import styles from "../Header/Header.module.scss";
 import classNames from "classnames/bind";
-// import {Wrapper } from "../Popper/Wrapper";
 
+// import {Wrapper } from "../Popper/Wrapper";
+import request from "../../../Utils/request";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Tippy from "@tippyjs/react/headless";
 import {
@@ -23,12 +24,17 @@ function Search() {
       return;
     }
     setLoading(true)
-    fetch(
-      `https://api.themoviedb.org/3/search/multi?api_key=bef653f66382a57bb4e7f51c9ca67648&query=${encodeURIComponent(searchValue)}`
+    request.get(
+      'search/multi?api_key=bef653f66382a57bb4e7f51c9ca67648&query', {
+        params:{
+          query: searchValue,
+        }
+      }
     )
-      .then((res) => res.json())
+      // .then((res) => res.json())
       .then((res) => {
-        setSearchResult(res.results);
+        // console.log(res.data.results)
+        setSearchResult(res.data.results);
         setLoading(false);
       })
       .catch(()=> {
@@ -57,7 +63,6 @@ function Search() {
                 searchResult.map((result) => (
               <ListMovie key={result.id} data={result} />
             ))}
-            {console.log(111, searchResult)}
           </ul>
         </div>
       )}

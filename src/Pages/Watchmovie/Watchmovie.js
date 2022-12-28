@@ -1,4 +1,5 @@
 import Header from "../../Layout/components/Header/Header";
+import Sidebar from "../../Layout/DefaultLayout/Sidebar/Sidebar";
 function Watchmovie (){
     return(
         <div>
@@ -6,6 +7,7 @@ function Watchmovie (){
             <div className="content">
                  <h2> Watchmovie </h2>
             </div>
+            <Sidebar/>
         </div>
     )
 }

@@ -3,7 +3,7 @@ import DetailMovie from '../Pages/DetailMovie/DetailMovie';
 import Watchmovie from '../Pages/Watchmovie/Watchmovie';
 const publicRoutes = [
     { path: '/', component: Home }, 
-    { path: '/DetailMovie', component: DetailMovie }, 
+    { path: '/DetailMovie', component: DetailMovie, layout: null }, 
     { path: '/watchmovie', component: Watchmovie, layout: null }, 
 
 ]

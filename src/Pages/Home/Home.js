@@ -1,9 +1,8 @@
 import classNames from "classnames/bind";
-import { Carousel } from "flowbite-react";
-import { Link } from "react-router-dom";
-import { IMAGE_PATH } from "../../Utils/constants";
 import styles from "./Home.module.scss";
-
+import axios from "axios";
+import { useState, useEffect } from "react";
+import Movies from "../../Compents/Movies/Movies";
 const cx = classNames.bind(styles);
 function Home() {
   // const images = [
@@ -13,117 +12,17 @@ function Home() {
   //     des: "Elevation to the Status of a God",
   //   },
   // ];
-  const movies = [
-    {
-      id:1,
-      title:"Tinh vực 4 vạn năm",
-      originalname : "Xing Yu Si Wan Nian",
-      episode : "Tập 14",
-      src: '../../Assets/Images/tinh-vuc-4-van-nam.jpg',
-      url:'tinh-vuc-4-van-nam',
-      viewsCount: "14.3K lượt xem",
-    },
-    {
-      id:2,
-      title:"Linh Kiếm Tôn",
-      originalname : "Xing Yu Si Wan Nian",
-      episode : "Tập 122",
-      src: '../../Assets/Images/linh-kiem-ton.jpg',
-      url:'linh-kiem-ton',
-      viewsCount: "14.3K lượt xem",
-    },
-    {
-      id:3,
-      title:"Nghịch Thiên Chí Tôn",
-      originalname : "Xing Yu Si Wan Nian",
-      episode : "Tập 200",
-      src: '../../Assets/Images/nghich-thien-chi-ton.png',
-      url:'nghich-thien-chi-ton',
-      viewsCount: "14.3K lượt xem",
-    },
-    {
-      id:4,
-      title:"Vạn Cổ Thần Thoại",
-      originalname : "Xing Yu Si Wan Nian",
-      episode : "Tập 30",
-      src: '../../Assets/Images/van-co-than-thoai.jpg',
-      url:'van-co-than-thoai',
-      viewsCount: "14.3K lượt xem",
-    },
-    {
-      id:5,
-      title:"Võ Thần Chúa Tể",
-      originalname : "Xing Yu Si Wan Nian",
-      episode : "Tập 210",
-      src: '../../Assets/Images/vo-than-chua-te.jpg',
-      url:'vo-than-chua-te',
-      viewsCount: "14.3K lượt xem",
-    },
-    {
-      id:6,
-      title:"Ta tại tiên giới kiếm điểm tích lũy",
-      originalname : "Xing Yu Si Wan Nian",
-      episode : "Tập 14",
-      src: '../../Assets/Images/ta-tai-tien-gioi-kiem-diem-tich-luy.jpg',
-      url:'ta-tai-tien-gioi-kiem-diem-tich-luy',
-      viewsCount: "14.3K lượt xem",
-    },
-    {
-      id:7,
-      title:"Tinh vực 4 vạn năm",
-      originalname : "Xing Yu Si Wan Nian",
-      episode : "Tập 14",
-      src: '../../Assets/Images/tinh-vuc-4-van-nam.jpg',
-      url:'tinh-vuc-4-van-nam',
-      viewsCount: "14.3K lượt xem",
-    },
-    {
-      id:8,
-      title:"Tinh vực 4 vạn năm",
-      originalname : "Xing Yu Si Wan Nian",
-      episode : "Tập 14",
-      src: '../../Assets/Images/tinh-vuc-4-van-nam.jpg',
-      url:'tinh-vuc-4-van-nam',
-      viewsCount: "14.3K lượt xem",
-    },
-    {
-      id:9,
-      title:"Tinh vực 4 vạn năm",
-      originalname : "Xing Yu Si Wan Nian",
-      episode : "Tập 14",
-      src: '../../Assets/Images/tinh-vuc-4-van-nam.jpg',
-      url:'tinh-vuc-4-van-nam',
-      viewsCount: "14.3K lượt xem",
-    },
-    {
-      id:10,
-      title:"Linh Kiếm Tôn",
-      originalname : "Xing Yu Si Wan Nian",
-      episode : "Tập 122",
-      src: '../../Assets/Images/linh-kiem-ton.jpg',
-      url:'linh-kiem-ton',
-      viewsCount: "14.3K lượt xem",
-    },
-    {
-      id:11,
-      title:"Nghịch Thiên Chí Tôn",
-      originalname : "Xing Yu Si Wan Nian",
-      episode : "Tập 200",
-      src: '../../Assets/Images/nghich-thien-chi-ton.png',
-      url:'nghich-thien-chi-ton',
-      viewsCount: "14.3K lượt xem",
-    },
-    {
-      id:12,
-      title:"Vạn Cổ Thần Thoại",
-      originalname : "Xing Yu Si Wan Nian",
-      episode : "Tập 30",
-      src: '../../Assets/Images/van-co-than-thoai.jpg',
-      url:'van-co-than-thoai',
-      viewsCount: "14.3K lượt xem",
-    },
-
-  ];
+ 
+  const [movies, setMovies] = useState([]);
+  useEffect(() => {
+    axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=bef653f66382a57bb4e7f51c9ca67648&language=en-US&page=1`)
+    .then((res) =>{
+      setMovies(res.data.results)
+      console.log('render', res.data.results)
+    })
+  },[])
+ 
+  
   return (
     <div className={cx("main-content p-4")}>
       <div className={cx("item-content-img")}>
@@ -136,32 +35,9 @@ function Home() {
         </div>
       </div> 
       <div className={cx("list-movie grid grid-cols-12 gap-4")}>
-        {movies.map((movie,index) => (<article className="col-span-3">
-             <div className="list-movie__item">
-               <Link
-                 className="list-movie-thumb"
-                 to={movie.url}
-                 title={movie.title}
-               >
-                 <figure>
-                   <img
-                     className="img-responsive"
-                     src={movie.src}
-                     alt={movie.title}
-                     title={movie.title}
-                   />
-                 </figure>
-                 <span class="episode">{movie.episode}</span>
-                 <div className="icon_overlay"></div>
-                 <div className="list-movie-title-box">
-                   <div className="list-movie-title ">
-                     <h2 className="entry-title">{movie.title}</h2>
-                     <p class="original_title">{movie.originalname}</p>{" "}
-                   </div>
-                 </div>
-               </Link>
-             </div>
-           </article>))}
+      {Array.isArray(movies) && movies.map((result) => (
+        <Movies key={result.id} data={result}  />
+      ))}
        {console.log(2222, movies)}
         
       </div>
@@ -170,3 +46,4 @@ function Home() {
 }
 
 export default Home;
+
