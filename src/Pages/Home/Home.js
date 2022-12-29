@@ -5,20 +5,13 @@ import { useState, useEffect } from "react";
 import Movies from "../../Compents/Movies/Movies";
 const cx = classNames.bind(styles);
 function Home() {
-  // const images = [
-  //   {
-  //     title: "Than an vuong toa",
-  //     src: "../../Assets/Images/than-an-vuong-toa-poster.jpg",
-  //     des: "Elevation to the Status of a God",
-  //   },
-  // ];
+
  
   const [movies, setMovies] = useState([]);
   useEffect(() => {
     axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=bef653f66382a57bb4e7f51c9ca67648&language=en-US&page=1`)
     .then((res) =>{
       setMovies(res.data.results)
-      console.log('render', res.data.results)
     })
   },[])
  
