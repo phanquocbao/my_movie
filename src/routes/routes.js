@@ -1,15 +1,12 @@
-import Home from '../Pages/Home/Home';
-import DetailMovie from '../Pages/DetailMovie/DetailMovie';
-import Watchmovie from '../Pages/Watchmovie/Watchmovie';
+import Home from "../Pages/Home/Home";
+import DetailMovie from "../Pages/DetailMovie/DetailMovie";
+import Watchmovie from "../Pages/Watchmovie/Watchmovie";
 const publicRoutes = [
-    { path: '/', component: Home }, 
-    { path: '/detailmovie', component: DetailMovie, layout: null }, 
-    { path: '/watchmovie', component: Watchmovie, layout: null }, 
+  { path: "/", component: Home },
+  { path: "/movie/:id", component: DetailMovie, layout: null },
+  { path: "/movie/:id/watchmovie", component: Watchmovie, layout: null },
+];
 
-]
+const privateRoutes = [];
 
-const privateRoutes = [
-
-]
-
-export {publicRoutes, privateRoutes}
+export { publicRoutes, privateRoutes };
