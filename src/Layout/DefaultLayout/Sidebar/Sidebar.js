@@ -30,7 +30,7 @@ function Sidebar() {
           </div>
           <ul className="list-movie-favourite">
             {Array.isArray(movieTrending) &&
-              movieTrending.map((result) => (
+              movieTrending.filter((_, index) => index < 6).map((result) => (
                 <MovieTrending key={result.id} data={result} />
               ))}
           </ul>

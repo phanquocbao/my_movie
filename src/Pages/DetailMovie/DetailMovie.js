@@ -17,7 +17,7 @@ function DetailMovie() {
     if (params.id === undefined){
       return
     }
-    request.get(`movie/${params.id}?api_key=${API_KEY}&language=en-US`)
+    request.get(`movie/${params.id}?api_key=${API_KEY}&language=en-US&append_to_response=videos,credits,similar`)
     .then((res)=>{
       setDetailMovie(res.data)
       // console.log('Detailmovie rednder ->', res.data)
@@ -32,7 +32,7 @@ function DetailMovie() {
       <Header />
       <Nav />
       <div className="wrapper">
-        {(detailMovie.id != undefined) && <MovieDetail res={detailMovie}  />}
+        {(detailMovie.id !== undefined) && <MovieDetail res={detailMovie}  />}
         {console.log(222, <MovieDetail res={detailMovie}  />)}
       </div>
     </div>

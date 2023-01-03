@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-regular-svg-icons";
+import { useState } from "react";
 
 import {
   faServer,
@@ -9,7 +10,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Sidebar from "../../Layout/DefaultLayout/Sidebar/Sidebar";
 function MovieDetail({ res }) {
-
+  console.log(111, res.genres[0].name);
+  const [active_key, setActive_key] = useState(0);
   return (
     <>
       <div
@@ -42,21 +44,16 @@ function MovieDetail({ res }) {
                       </h2>
 
                       <div className="facts flex text-sm justify-start">
-                        <span className="certification  mr-4"> phim |</span>
-
                         <span className="genres mr-4">
-                          <a
-                            className="mr-2"
-                            href="/genre/18-phim-chinh-k-ch/tv"
-                          >
-                            Phim Chính Kịch |
-                          </a>
-                          <a className="" href="/genre/35-phim-hai/tv">
-                            Phim Hài |
-                          </a>
+                          {res.genres.map((list) => (
+                            <a className="mr-2" href="#/">
+                              {`${list.name} |`}
+                            </a>
+                          ))}
                         </span>
-
-                        <span className="runtime mr-4">50m</span>
+                        <span className="runtime mr-4">
+                          Runtime : {res.runtime}'
+                        </span>
                       </div>
                     </div>
                     <div className="header_info">
@@ -70,23 +67,23 @@ function MovieDetail({ res }) {
                     <div className="action-watch-box">
                       <div className="button-watch">
                         <Link
-                            className="episode-movie"
-                            to={{
-                              pathname: `/movie/${res.id}/watchmovie`,
-                              state: { fromDashboard: true },
-                            }}
-                          >
-                          <FontAwesomeIcon  icon={faAngleDown} /> Tập phim
-                            </Link>
-                          <Link
-                            className="watch-movie"
-                            to={{
-                              pathname: `/movie/${res.id}/watchmovie`,
-                              state: { fromDashboard: true },
-                            }}
-                          >
+                          className="episode-movie"
+                          to={{
+                            pathname: `/movie/${res.id}/watchmovie`,
+                            state: { fromDashboard: true },
+                          }}
+                        >
+                          <FontAwesomeIcon icon={faAngleDown} /> Tập phim
+                        </Link>
+                        <Link
+                          className="watch-movie"
+                          to={{
+                            pathname: `/movie/${res.id}/watchmovie`,
+                            state: { fromDashboard: true },
+                          }}
+                        >
                           <FontAwesomeIcon icon={faPlay} /> Xem phim
-                            </Link>
+                        </Link>
                       </div>
                     </div>
                     <div className="rating">
@@ -129,120 +126,42 @@ function MovieDetail({ res }) {
           <div className="grid grid-cols-12 gap-1">
             <div className="col-span-9">
               <div className="sever-movie p-4">
-                <span></span>
+                <span className="server-name">
+                  <span className="hl-server"> Cast and Crew </span>
+                </span>
+                <div className="grid grid-cols-5 gap-4">
+                  {res.credits.cast.filter((_, index) => index < 5).map((list,index) => (
+                    <div className="info-cast">
+                      <img
+                        src={`https://image.tmdb.org/t/p/w154/${list.profile_path}`}
+                        alt=""
+                        width="100%"
+                      />
+                      <div className="name-card">
+                        <h4 class="card-movie-name">{list.name}</h4>
+                        <h5 class="card-release-date">{list.character}</h5>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
                 <span className="server-name">
                   <span className="hl-server"></span>
                   <FontAwesomeIcon icon={faServer} /> Server #1
                 </span>
-                <span className="server-name">
-                  <span className="hl-server"></span>
-                  <FontAwesomeIcon icon={faServer} /> Server #2
-                </span>
-                <span className="server-name">
-                  <span className="hl-server"></span>
-                  <FontAwesomeIcon icon={faServer} /> Server #3
-                </span>
                 <ul className="list-movie-eps">
-                  <li className="movie-episode-item">
-                    <Link>
-                      <span>20</span>
-                    </Link>
-                  </li>
-                  <li className="movie-episode-item">
-                    <Link>
-                      <span>19</span>
-                    </Link>
-                  </li>
-                  <li className="movie-episode-item">
-                    <Link>
-                      <span>18</span>
-                    </Link>
-                  </li>
-                  <li className="movie-episode-item">
-                    <Link>
-                      <span>17</span>
-                    </Link>
-                  </li>
-                  <li className="movie-episode-item">
-                    <Link>
-                      <span>16</span>
-                    </Link>
-                  </li>
-                  <li className="movie-episode-item">
-                    <Link>
-                      <span>15</span>
-                    </Link>
-                  </li>
-                  <li className="movie-episode-item">
-                    <Link>
-                      <span>14</span>
-                    </Link>
-                  </li>
-                  <li className="movie-episode-item">
-                    <Link>
-                      <span>13</span>
-                    </Link>
-                  </li>
-                  <li className="movie-episode-item">
-                    <Link>
-                      <span>12</span>
-                    </Link>
-                  </li>
-                  <li className="movie-episode-item">
-                    <Link>
-                      <span>11</span>
-                    </Link>
-                  </li>
-                  <li className="movie-episode-item">
-                    <Link>
-                      <span>10</span>
-                    </Link>
-                  </li>
-                  <li className="movie-episode-item">
-                    <Link>
-                      <span>9</span>
-                    </Link>
-                  </li>
-                  <li className="movie-episode-item">
-                    <Link>
-                      <span>8</span>
-                    </Link>
-                  </li>
-                  <li className="movie-episode-item">
-                    <Link>
-                      <span>7</span>
-                    </Link>
-                  </li>
-                  <li className="movie-episode-item">
-                    <Link>
-                      <span>6</span>
-                    </Link>
-                  </li>
-                  <li className="movie-episode-item">
-                    <Link>
-                      <span>5</span>
-                    </Link>
-                  </li>
-                  <li className="movie-episode-item">
-                    <Link>
-                      <span>4</span>
-                    </Link>
-                  </li>
-                  <li className="movie-episode-item">
-                    <Link>
-                      <span>3</span>
-                    </Link>
-                  </li>
-                  <li className="movie-episode-item">
-                    <Link>
-                      <span>2</span>
-                    </Link>
-                  </li>
-                  <li className="movie-episode-item">
-                    <Link>
-                      <span>1</span>
-                    </Link>
-                  </li>
+                  {res.videos.results.map((result, index) => (
+                    <li
+                      className="movie-episode-item"
+                      onClick={() => {
+                        setActive_key(index);
+                      }}
+                    >
+                      <a>
+                        <span>{index + 1}</span>
+                      </a>
+                    </li>
+                  ))}
                 </ul>
 
                 <div className="movie-notice">

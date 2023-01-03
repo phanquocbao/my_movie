@@ -7,6 +7,7 @@ import { useState } from "react";
 
 function Watch({ data }) {
   const [active_key, setActive_key] = useState(0);
+
   console.log("watch render", data);
   return (
     <>
@@ -32,16 +33,8 @@ function Watch({ data }) {
                   <span className="hl-server"></span>
                   <FontAwesomeIcon icon={faServer} /> Server #1
                 </span>
-                <span className="server-name">
-                  <span className="hl-server"></span>
-                  <FontAwesomeIcon icon={faServer} /> Server #2
-                </span>
-                <span className="server-name">
-                  <span className="hl-server"></span>
-                  <FontAwesomeIcon icon={faServer} /> Server #3
-                </span>
                 <ul className="list-movie-eps">
-                  {data.results.map((result, index) => (
+                  {data.results.reverse().map((result, index) => (
                     <li
                       className="movie-episode-item"
                       onClick={() => {
