@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 function Movies ({data}){
+
     return(
         <article className="col-span-3">
              <div className="list-movie__item">

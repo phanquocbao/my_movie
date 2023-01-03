@@ -1,6 +1,8 @@
 import classNames from "classnames/bind";
 import styles from "./Home.module.scss";
-import axios from "axios";
+import { API_KEY } from "../../Utils/constants";
+
+import request from "../../Utils/request";
 import { useState, useEffect } from "react";
 import Movies from "../../Compents/Movies/Movies";
 const cx = classNames.bind(styles);
@@ -9,7 +11,7 @@ function Home() {
  
   const [movies, setMovies] = useState([]);
   useEffect(() => {
-    axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=bef653f66382a57bb4e7f51c9ca67648&language=en-US&page=1`)
+    request.get(`movie/popular?api_key=${API_KEY}&language=en-US&page=1`)
     .then((res) =>{
       setMovies(res.data.results)
     })
@@ -30,8 +32,8 @@ function Home() {
       <div className={cx("list-movie grid grid-cols-12 gap-4")}>
       {Array.isArray(movies) && movies.map((result) => (
         <Movies key={result.id} data={result}  />
+        
       ))}
-       {console.log(2222, movies)}
         
       </div>
     </div>
