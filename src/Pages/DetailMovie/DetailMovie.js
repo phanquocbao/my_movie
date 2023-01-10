@@ -33,7 +33,6 @@ function DetailMovie() {
       <Nav />
       <div className="wrapper">
         {(detailMovie.id !== undefined) && <MovieDetail res={detailMovie}  />}
-        {console.log(222, <MovieDetail res={detailMovie}  />)}
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-regular-svg-icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import {
   faServer,
@@ -10,8 +10,30 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Sidebar from "../../Layout/DefaultLayout/Sidebar/Sidebar";
 function MovieDetail({ res }) {
-  console.log(111, res.genres[0].name);
   const [active_key, setActive_key] = useState(0);
+
+  const handleMovieFavourite = (val) => {
+    const listmoviveRaw = localStorage.getItem("movie");
+    let listMovies = [];
+    if (!!listmoviveRaw) {
+      listMovies = JSON.parse(listmoviveRaw);
+    }
+    const foundItemm = listMovies.find((item) => item.id === res.id);
+    if (!!foundItemm) {
+    } else {
+      listMovies = [
+        {
+          id: res.id,
+          name: res.original_title,
+          src: `https://image.tmdb.org/t/p/original${res.poster_path}`,
+          date: res.release_date,
+        },
+        ...listMovies,
+      ];
+
+      localStorage.setItem("movie", JSON.stringify(listMovies));
+    }
+  };
   return (
     <>
       <div
@@ -31,6 +53,14 @@ function MovieDetail({ res }) {
                       src={`https://image.tmdb.org/t/p/original${res.poster_path}`}
                       alt={res.original_title}
                     />
+                    <div
+                      className="bookmark"
+                      onClick={() => {
+                        handleMovieFavourite(res.id);
+                      }}
+                    >
+                      <img src="../../Assets/Images/bookmark-2.png" alt="" />
+                    </div>
                   </div>
                 </div>
                 <div className="header_poster_wrapper pl-[40px] flex">
@@ -130,19 +160,23 @@ function MovieDetail({ res }) {
                   <span className="hl-server"> Cast and Crew </span>
                 </span>
                 <div className="grid grid-cols-5 gap-4">
-                  {res.credits.cast.filter((_, index) => index < 5).map((list,index) => (
-                    <div className="info-cast">
-                      <img
-                        src={`https://image.tmdb.org/t/p/w154/${list.profile_path}`}
-                        alt=""
-                        width="100%"
-                      />
-                      <div className="name-card">
-                        <h4 class="card-movie-name">{list.name}</h4>
-                        <h5 class="card-release-date">{list.character}</h5>
+                  {res.credits.cast
+                    .filter((_, index) => index < 5)
+                    .map((list, index) => (
+                      <div className="info-cast">
+                        <img
+                          src={`https://image.tmdb.org/t/p/w154/${list.profile_path}`}
+                          alt=""
+                          width="100%"
+                        />
+                        <div className="name-card">
+                          <h4 className="card-movie-name">{list.name}</h4>
+                          <h5 className="card-release-date">
+                            {list.character}
+                          </h5>
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    ))}
                 </div>
 
                 <span className="server-name">
@@ -157,9 +191,9 @@ function MovieDetail({ res }) {
                         setActive_key(index);
                       }}
                     >
-                      <a>
+                      <Link>
                         <span>{index + 1}</span>
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>

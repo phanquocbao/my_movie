@@ -18,6 +18,7 @@ function Search() {
   const [searchValue, setSearchValue] = useState("");
   const [showResult, setShowResult] = useState(true);
   const [loading, setLoading] = useState(false);
+  
 
   useEffect(() => {
     if (!searchValue.trim()) {
