@@ -156,8 +156,8 @@ function MovieDetail({ res }) {
           <div className="grid grid-cols-12 gap-1">
             <div className="col-span-9">
               <div className="sever-movie p-4">
-                <span className="server-name">
-                  <span className="hl-server"> Cast and Crew </span>
+                <span className="server-name bg-gray-400 dark:bg-black">
+                  <span className="hl-server text-black dark:text-yellow-500"> Cast and Crew </span>
                 </span>
                 <div className="grid grid-cols-5 gap-4">
                   {res.credits.cast
@@ -179,11 +179,11 @@ function MovieDetail({ res }) {
                     ))}
                 </div>
 
-                <span className="server-name">
+                <span className="server-name dark:bg-black bg-slate-300 text-black dark:text-yellow-500">
                   <span className="hl-server"></span>
                   <FontAwesomeIcon icon={faServer} /> Server #1
                 </span>
-                <ul className="list-movie-eps">
+                <ul className="list-movie-eps bg-gray-300 dark:bg-black">
                   {res.videos.results.map((result, index) => (
                     <li
                       className="movie-episode-item"
@@ -192,7 +192,7 @@ function MovieDetail({ res }) {
                       }}
                     >
                       <Link>
-                        <span>{index + 1}</span>
+                        <span className="text-black bg-white dark:bg-slate-900 dark:text-white hover:bg-yellow-300 cursor-pointer text-xs">{index + 1}</span>
                       </Link>
                     </li>
                   ))}
@@ -209,11 +209,11 @@ function MovieDetail({ res }) {
                 <div className="showtime_movies">
                   <p>PHIM CHIẾU 1 TẬP MỖI TRƯA THỨ 5 HÀNG TUẦN</p>
                 </div>
-                <div className="des-content-movie">
+                <div className="des-content-movie bg-slate-300 dark:bg-slate-900">
                   <div className="section-title">
                     <span className="text-xl">Nội dung phim</span>
                   </div>
-                  <p>{res.overview}</p>
+                  <p className="dark:text-white text-black">{res.overview}</p>
                 </div>
               </div>
             </div>

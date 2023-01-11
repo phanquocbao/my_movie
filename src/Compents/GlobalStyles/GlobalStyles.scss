@@ -50,14 +50,8 @@ button span {
   padding: 15px 15px
 }
 
-.menu-items > a:hover{
-  color: #ea8300;
-  background: #000;
-}
 .dropdown > li a:hover {
   text-decoration: none;
-  color: #6cbbff;
-  background-color: #1f3d58;
   transition: .5s all;  
 }
 
@@ -93,9 +87,8 @@ button span {
   z-index: 9999;
   padding: 0.5rem 0;
   list-style: none;
-  background-color: #1f3d58;
-  display: none;
   color: #fff;
+  display: none;
 }
 
 .dropdown.show {
@@ -136,35 +129,24 @@ button span {
 }
 .search-result{
   width: 450px;
-  background: #090b0c;
+  // background: #090b0c;
   max-height: 455px ;
   overflow: hidden;
 
 }
 .list-search-result li {
-  font-size: 13px;
   border-top: 1px solid #20282f;
-  padding: 12px;
-
 }
-.list-search-result li:hover{
-  background: #1e262d;
-} 
+
 .list-search-result_list_item{
     display: flex;
     font-size: 13px;
-
-    .image{
-      width: 35px;
-      height: 44px;
-      margin-right: 10px;
-    }
     .label{
-      padding: 0;
+    padding: 0;
     font-size: 13px;
     font-weight: 400;
     margin: 3px 0 0;
-    color: #fff;
+
     }
     .enName{
       font-size: 11px;
@@ -320,25 +302,15 @@ img.img-responsive{
   background: linear-gradient(to right,#ff8a00,#ff2070);
   padding: 0.5px;
 }
-.movie-favourite-item{
-  margin-top: 10px;
-}
 .movie-favourite_item-detail{
-  display: flex;
-  font-size: 13px;
+
 
   .image{
     max-width: 75px;
     min-height: 95px;
   }
-  .info{
-    margin-left: 12px;
-  }
   .label{
-    color: #d8d8d8;
-    cursor: pointer;
     margin: 10px 0 5px;
-    font-size: 13px;
     line-height: 20px;
     display: -webkit-box;
     overflow: hidden;
@@ -346,11 +318,6 @@ img.img-responsive{
     -webkit-box-flex: 1;
     -webkit-box-orient: vertical;
   }
-  .viewsCount {
-    font-size: 11px;
-    margin-top: 5px;
-    color: #e7ac32;
-}
 }
 
 /// Detail Movie
@@ -535,9 +502,7 @@ img.img-responsive{
  .server-name {
   float: none;
   font-size: 16px;
-  background: #0b0f15;
   padding: 8px 10px 5px;
-  color: #ea9b06;
   font-weight: 700;
   text-transform: uppercase;
 }
@@ -548,7 +513,7 @@ span.server-name:first-child{
   margin-right: 10px;
 }
 .list-movie-eps{
-  background: #0b0f15;
+
     padding: 15px 12px 5px;
     border-radius: 3px;
 
@@ -561,12 +526,8 @@ span.server-name:first-child{
   margin: 0;
 }
 .movie-episode-item a span{
-  background: #1f2c3e;
   border-radius: 3px;
   transition: .6s all;
-  font-size: 12px;
-  color: #fff;
-  cursor: pointer;
   display: inline-block;
   width: 100%;
   margin-bottom: 0.7rem;
@@ -597,11 +558,9 @@ span.server-name:first-child{
 .des-content-movie{
   padding: 15px;
   margin-top: -1px;
-  background: #101821;
   border: 1px solid #1d2731a6;
 }
 .des-content-movie p {
-  color: #989898;
   line-height: 1.8;
   width: 100%;
   padding: 10px 0;

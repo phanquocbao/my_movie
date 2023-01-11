@@ -8,7 +8,7 @@ const Dropdown = ({ submenus, dropdown, depthLevel }) => {
     <ul
       className={`dropdown ${dropdownClass} ${
         dropdown ? 'show' : ''
-      }`}
+      } bg-white dark:bg-cyan-700 text-black`}
     >
       {submenus.map((submenu, index) => (
         <MenuItems

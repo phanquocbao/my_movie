@@ -55,7 +55,7 @@ function Search() {
       interactive
       visible={showResult && !!searchResult && searchResult.length > 0}
       render={(attrs) => (
-        <div className={cx("search-result")} tabIndex="-1" {...attrs}>
+        <div className={cx("search-result bg-slate-300 dark:bg-black")} tabIndex="-1" {...attrs}>
           <ul className={cx("list-search-result")}>
             <li>
               Kết quả tìm kiếm: <strong>{searchValue}</strong>

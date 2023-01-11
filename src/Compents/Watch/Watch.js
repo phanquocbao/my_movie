@@ -29,11 +29,11 @@ function Watch({ data }) {
             <div className="col-span-9">
               <div className="sever-movie p-4">
                 <span></span>
-                <span className="server-name">
+                <span className="server-name dark:bg-black bg-slate-300 text-black dark:text-yellow-500">
                   <span className="hl-server"></span>
                   <FontAwesomeIcon icon={faServer} /> Server #1
                 </span>
-                <ul className="list-movie-eps">
+                <ul className="list-movie-eps bg-gray-300 dark:bg-black">
                   {data.results.reverse().map((result, index) => (
                     <li
                       className="movie-episode-item"
@@ -42,7 +42,7 @@ function Watch({ data }) {
                       }}
                     >
                       <a>
-                        <span>{index + 1}</span>
+                      <span className="text-black bg-white dark:bg-slate-900 dark:text-white hover:bg-yellow-300 cursor-pointer text-xs">{index + 1}</span>
                       </a>
                     </li>
                   ))}

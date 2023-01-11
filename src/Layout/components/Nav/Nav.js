@@ -7,7 +7,7 @@ function Nav() {
   return (
     <div
       className={cx(
-        "wrapper dark:bg-darkbluea bg-white min-h-[50px] flex items-center justify-center"
+        "wrapper dark:bg-darkbluea bg-white min-h-[50px] flex items-center justify-center shadow-gray-600 shadow-md"
       )}
     >
       <div className={cx("container-main w-[1170px] ")}>

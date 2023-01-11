@@ -59,7 +59,7 @@ const MenuItems = ({ items, depthLevel }) => {
             {window.innerWidth < 960 && depthLevel === 0 ? (
               items.title
             ) : (
-              <Link className='' to={items.url}>{items.title}</Link>
+              <Link className='dark:text-white text-black hover:bg-transparent' to={items.url}>{items.title}</Link>
             )}
 
             {depthLevel > 0 &&
@@ -98,7 +98,7 @@ const MenuItems = ({ items, depthLevel }) => {
           />
         </>
       ) : (
-        <Link className='block no-underline' to={items.url}>{items.title}</Link>
+        <Link className='block no-underline text-black dark:text-gray-200 dark:hover:bg-black dark:hover:text-orange-400 hover:bg-slate-300' to={items.url}>{items.title}</Link>
       )}
     </li>
   );

@@ -7,6 +7,7 @@ import Header from "../../Layout/components/Header/Header";
 import Nav from "../../Layout/components/Nav/Nav";
 import MovieDetail from "../../Compents/MovieDetail/MoveiDetail";
 import { API_KEY } from "../../Utils/constants";
+import DarkMode from "../../Layout/components/DarkMode/DarkMode";
 
 function DetailMovie() {
   const params = useParams()
@@ -33,6 +34,7 @@ function DetailMovie() {
       <Nav />
       <div className="wrapper">
         {(detailMovie.id !== undefined) && <MovieDetail res={detailMovie}  />}
+        <DarkMode/>
       </div>
     </div>
   );
