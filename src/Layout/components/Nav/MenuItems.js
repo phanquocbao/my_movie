@@ -41,7 +41,7 @@ const MenuItems = ({ items, depthLevel }) => {
 
   return (
     <li
-      className="menu-items"
+      className="menu-items relative text-sm"
       ref={ref}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
@@ -50,6 +50,7 @@ const MenuItems = ({ items, depthLevel }) => {
       {items.url && items.submenu ? (
         <>
           <button
+          
             type="button"
             aria-haspopup="menu"
             aria-expanded={dropdown ? 'true' : 'false'}
@@ -97,7 +98,7 @@ const MenuItems = ({ items, depthLevel }) => {
           />
         </>
       ) : (
-        <Link to={items.url}>{items.title}</Link>
+        <Link className='block no-underline' to={items.url}>{items.title}</Link>
       )}
     </li>
   );

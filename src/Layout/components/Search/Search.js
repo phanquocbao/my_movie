@@ -69,7 +69,7 @@ function Search() {
       )}
       onClickOutside={handleHideResult}
     >
-      <div className={cx("search col-span-2 col-start-4 col-end-8")}>
+      <div className={cx("search w-[450px] h-[30px] flex items-center mt-[10px] shadow-none border-white bg-sky-200 dark:border-black dark:bg-slate-700 text-sm rounded border-solid px-[12px] py-[10px] divide-x-2 col-span-2 col-start-4 col-end-8")}>
         <input
           className={cx("input")}
           type="search"

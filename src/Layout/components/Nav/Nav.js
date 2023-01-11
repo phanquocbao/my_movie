@@ -7,12 +7,12 @@ function Nav() {
   return (
     <div
       className={cx(
-        "wrapper bg-darkbluea min-h-[50px] flex items-center justify-center"
+        "wrapper dark:bg-darkbluea bg-white min-h-[50px] flex items-center justify-center"
       )}
     >
       <div className={cx("container-main w-[1170px] ")}>
         <nav>
-        <ul className="menus flex text-sm">
+        <ul className="menus flex items-center list-none text-sm flex-wrap">
         {menuItems.map((menu, index) => {
           const depthLevel = 0;
           return (
