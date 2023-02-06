@@ -7,17 +7,15 @@ import { useState, useEffect } from "react";
 import Movies from "../../Compents/Movies/Movies";
 const cx = classNames.bind(styles);
 function Home() {
-
- 
   const [movies, setMovies] = useState([]);
   useEffect(() => {
-    request.get(`movie/popular?api_key=${API_KEY}&language=en-US&page=1`)
-    .then((res) =>{
-      setMovies(res.data.results)
-    })
-  },[])
- 
-  
+    request
+      .get(`movie/popular?api_key=${API_KEY}&language=en-US&page=1`)
+      .then((res) => {
+        setMovies(res.data.results);
+      });
+  }, []);
+
   return (
     <div className={cx("main-content p-4")}>
       <div className={cx("item-content-img")}>
@@ -28,17 +26,17 @@ function Home() {
             <p>[Elevation to the Status of a God]</p>
           </div>
         </div>
-      </div> 
-      <div className={cx("list-movie grid grid-cols-12 gap-4")}>
-      {Array.isArray(movies) && movies.map((result) => (
-        <Movies key={result.id} data={result}  />
-        
-      ))}
-        
+      </div>
+      <div
+        className={cx(
+          "list-movie grid grid-cols-2 sm:grid-cols-4 gap-1 md:gap-4"
+        )}
+      >
+        {Array.isArray(movies) &&
+          movies.map((result) => <Movies key={result.id} data={result} />)}
       </div>
     </div>
   );
 }
 
 export default Home;
-

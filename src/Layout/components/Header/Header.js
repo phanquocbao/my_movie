@@ -51,9 +51,9 @@ function Header() {
 
   return (
     <header className={cx("wrapperheader flex justify-center items-center  bg-sky-400 h-[65px] dark:bg-slate-800")}>
-      <div className="container-main w-[1170px] flex items-center justify-center">
-        <div className={cx("inner grid grid-cols-12")}>
-          <div className={cx("logo w-full col-span-1 col-start-1 col-end-3")}>
+      <div className="container-main lg:w-[1170px] flex items-center justify-center">
+        <div className={cx("inner grid grid-cols-3 gap-4")}>
+          <div className={cx("logo w-full")}>
             <Link to="" className={cx("logo-link")}>
               <img
                 className={cx("w-[300px]")}
@@ -72,7 +72,7 @@ function Header() {
                 <div className="theme-box">
                   <div className="section-title flex justify-between">
                     <span className="">BOOKMARKS</span>
-                    <button class="remove-all-bookmark" onClick={handledeleteallmovie}>x Remove all</button>
+                    <button className="remove-all-bookmark" onClick={handledeleteallmovie}>x Remove all</button>
                   </div>
                   <ul className="list-box">
                     {Array.isArray(getList) &&
@@ -102,7 +102,7 @@ function Header() {
               </div>
             )}
           >
-            <div className={cx("col-span-1 col-start-11 col-end-13 ")}>
+            <div className={cx("")}>
               <div className={cx("get-bookmark inline-block py-0.375rem px-2.5 rounded-2xl text-white cursor-pointer text-base bg-blue-600 mr-3.5 mt-px")}>
                 <i className="hl-bookmark"></i>
                 <span> Phim yêu thích</span>

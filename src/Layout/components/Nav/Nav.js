@@ -10,7 +10,7 @@ function Nav() {
         "wrapper dark:bg-darkbluea bg-white min-h-[50px] flex items-center justify-center shadow-gray-600 shadow-md"
       )}
     >
-      <div className={cx("container-main w-[1170px] ")}>
+      <div className={cx("container-main w-[1170px]")}>
         <nav>
         <ul className="menus flex items-center list-none text-sm flex-wrap">
         {menuItems.map((menu, index) => {

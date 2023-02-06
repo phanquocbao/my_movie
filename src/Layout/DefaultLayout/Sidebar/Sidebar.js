@@ -23,7 +23,7 @@ function Sidebar() {
 
   return (
     <>
-      <aside className={cx("wrapper col-span-3")}>
+      <aside className={cx("wrapper lg:col-span-3 sm:col-span-12")}>
         <div className="siderbar-content p-4">
           <div className="section-title">
             <span className="">Top Trending</span>

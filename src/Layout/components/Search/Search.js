@@ -18,29 +18,27 @@ function Search() {
   const [searchValue, setSearchValue] = useState("");
   const [showResult, setShowResult] = useState(true);
   const [loading, setLoading] = useState(false);
-  
 
   useEffect(() => {
     if (!searchValue.trim()) {
       return;
     }
-    setLoading(true)
-    request.get(
-      'search/multi?api_key=bef653f66382a57bb4e7f51c9ca67648&query', {
-        params:{
+    setLoading(true);
+    request
+      .get("search/multi?api_key=bef653f66382a57bb4e7f51c9ca67648&query", {
+        params: {
           query: searchValue,
-        }
-      }
-    )
+        },
+      })
       // .then((res) => res.json())
       .then((res) => {
         // console.log(res.data.results)
         setSearchResult(res.data.results);
         setLoading(false);
       })
-      .catch(()=> {
-        setLoading(false)
-      })
+      .catch(() => {
+        setLoading(false);
+      });
   }, [searchValue]);
 
   const handleHideResult = () => {
@@ -49,27 +47,37 @@ function Search() {
 
   return (
     <Tippy
-     content="Nhan Enter de tim kiem"
+      content="Nhan Enter de tim kiem"
       value={searchValue}
       placement="bottom"
       interactive
       visible={showResult && !!searchResult && searchResult.length > 0}
       render={(attrs) => (
-        <div className={cx("search-result bg-slate-300 dark:bg-black")} tabIndex="-1" {...attrs}>
+        <div
+          className={cx("search-result bg-slate-300 dark:bg-black")}
+          tabIndex="-1"
+          {...attrs}
+        >
           <ul className={cx("list-search-result")}>
             <li>
               Kết quả tìm kiếm: <strong>{searchValue}</strong>
             </li>
             {Array.isArray(searchResult) &&
-                searchResult.map((result) => (
-              <ListMovie key={result.id} data={result} />
-            ))}
+              searchResult.map((result) => (
+                <ListMovie key={result.id} data={result} />
+              ))}
           </ul>
         </div>
       )}
       onClickOutside={handleHideResult}
     >
-      <div className={cx("search w-[450px] h-[30px] flex items-center mt-[10px] shadow-none border-white bg-sky-200 dark:border-black dark:bg-slate-700 text-sm rounded border-solid px-[12px] py-[10px] divide-x-2 col-span-2 col-start-4 col-end-8")}>
+      <div
+        className={cx(
+          `search w-[450px] h-[30px] items-center mt-[10px] 
+          shadow-none border-white bg-sky-200 dark:border-black
+           dark:bg-slate-700 text-sm rounded border-solid px-[12px] py-[10px] divide-x-2 hidden sm:flex`
+        )}
+      >
         <input
           className={cx("input")}
           type="search"
@@ -78,7 +86,9 @@ function Search() {
           onChange={(e) => setSearchValue(e.target.value)}
           onFocus={() => setSearchResult(true)}
         />
-        {loading && <FontAwesomeIcon className={cx("loading")} icon={faSpinner} />}
+        {loading && (
+          <FontAwesomeIcon className={cx("loading")} icon={faSpinner} />
+        )}
         <button className={cx("search-btn")}>
           <FontAwesomeIcon icon={faMagnifyingGlass} />
         </button>

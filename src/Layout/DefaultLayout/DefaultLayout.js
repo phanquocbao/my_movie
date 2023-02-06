@@ -16,9 +16,9 @@ function DefaultLayout({ children }) {
       <Header />
       <Nav />
       <div className={cx("flex justify-center z-10")}>
-        <div className={cx("w-[1170px] content dark:bg-gray-900 bg-white shadow-gray-600 shadow-md")}>
-          <div className={cx("grid grid-cols-12 gap-1")}>
-            <div className={cx("col-span-9")}>{children}</div>
+        <div className={cx("lg:w-[1170px] content dark:bg-gray-900 bg-white shadow-gray-600 shadow-md")}>
+          <div className={cx("grid lg:grid-cols-12 lg:gap-1 sm:grid-cols-12")}>
+            <div className={cx("lg:col-span-9 sm:col-span-12")}>{children}</div>
             <Sidebar />
           </div>
         </div>
