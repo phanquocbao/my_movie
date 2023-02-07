@@ -75,7 +75,7 @@ function Search() {
         className={cx(
           `search w-[450px] h-[30px] items-center mt-[10px] 
           shadow-none border-white bg-sky-200 dark:border-black
-           dark:bg-slate-700 text-sm rounded border-solid px-[12px] py-[10px] divide-x-2 hidden sm:flex`
+           dark:bg-slate-700 text-sm rounded border-solid px-[12px] py-[10px] divide-x-2 hidden sm:flex col-span-2`
         )}
       >
         <input

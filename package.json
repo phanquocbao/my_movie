@@ -14,6 +14,7 @@
     "@tippyjs/react": "^4.2.6",
     "axios": "^1.2.2",
     "classnames": "^2.3.2",
+    "fast-average-color": "^9.3.0",
     "flowbite": "^1.5.5",
     "flowbite-react": "^0.3.7",
     "react": "^18.2.0",

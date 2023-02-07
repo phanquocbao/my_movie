@@ -9,8 +9,12 @@ import {
   faAngleDown,
 } from "@fortawesome/free-solid-svg-icons";
 import Sidebar from "../../Layout/DefaultLayout/Sidebar/Sidebar";
+import { FastAverageColor } from "fast-average-color";
+import { useRef } from "react";
+
 function MovieDetail({ res }) {
   const [active_key, setActive_key] = useState(0);
+  const [mainColor, setMainColor] = useState("");
 
   const handleMovieFavourite = (val) => {
     const listmoviveRaw = localStorage.getItem("movie");
@@ -34,6 +38,14 @@ function MovieDetail({ res }) {
       localStorage.setItem("movie", JSON.stringify(listMovies));
     }
   };
+
+  const handleAfterLoadThumb = (e) => {
+    const fac = new FastAverageColor();
+    const color = fac.getColor(e.target);
+    console.log("🚀 ~ file: MoveiDetail.js:45 ~ handleAfterLoadThumb ~ color", color)
+    setMainColor(color.hex);
+  };
+
   return (
     <>
       <div
@@ -52,6 +64,7 @@ function MovieDetail({ res }) {
                       className="poster max-w-[300px]  max-h-[450px]"
                       src={`https://image.tmdb.org/t/p/original${res.poster_path}`}
                       alt={res.original_title}
+                      onLoad={handleAfterLoadThumb}
                     />
                     <div
                       className="bookmark"
@@ -63,7 +76,7 @@ function MovieDetail({ res }) {
                     </div>
                   </div>
                 </div>
-                <div className="header_poster_wrapper pl-[40px] flex">
+                <div className="header_poster_wrapper pl-[40px] sm:flex hidden">
                   <div className="Header poster">
                     <div className="title ">
                       <h2 className="10 text-white">
@@ -114,6 +127,11 @@ function MovieDetail({ res }) {
                         >
                           <FontAwesomeIcon icon={faPlay} /> Xem phim
                         </Link>
+                        <div
+                          className="w-6 h-6 "
+                          style={{ backgroundColor: mainColor }}
+                        >
+                        </div>
                       </div>
                     </div>
                     <div className="rating">
@@ -154,12 +172,15 @@ function MovieDetail({ res }) {
       <div className="flex justify-center">
         <div className="w-[1170px] content">
           <div className="grid grid-cols-12 gap-1">
-            <div className="col-span-9">
+            <div className="sm:col-span-9 col-span-12">
               <div className="sever-movie p-4">
                 <span className="server-name bg-gray-400 dark:bg-black">
-                  <span className="hl-server text-black dark:text-yellow-500"> Cast and Crew </span>
+                  <span className="hl-server text-black dark:text-yellow-500">
+                    {" "}
+                    Cast and Crew{" "}
+                  </span>
                 </span>
-                <div className="grid grid-cols-5 gap-4">
+                <div className="grid sm:grid-cols-5 grid-cols-2 gap-4">
                   {res.credits.cast
                     .filter((_, index) => index < 5)
                     .map((list, index) => (
@@ -192,7 +213,9 @@ function MovieDetail({ res }) {
                       }}
                     >
                       <Link>
-                        <span className="text-black bg-white dark:bg-slate-900 dark:text-white hover:bg-yellow-300 cursor-pointer text-xs">{index + 1}</span>
+                        <span className="text-black bg-white dark:bg-slate-900 dark:text-white hover:bg-yellow-300 cursor-pointer text-sm sm:text-xs">
+                          {index + 1}
+                        </span>
                       </Link>
                     </li>
                   ))}
@@ -218,7 +241,7 @@ function MovieDetail({ res }) {
               </div>
             </div>
             {/* end col 9 */}
-            <div className="col-span-3">
+            <div className="sm:col-span-3 col-span-12">
               <Sidebar />
             </div>
           </div>
