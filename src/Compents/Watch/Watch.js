@@ -14,8 +14,7 @@ function Watch({ data }) {
       <div className="video flex justify-center">
         <div className="w-[1170px] main-content">
           <iframe
-            width="100%"
-            height="650px"
+            className="w-[100%] sm:h-[650px] h-[300px]"
             src={`https://www.youtube.com/embed/${data.results[active_key]?.key}`}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
@@ -26,7 +25,7 @@ function Watch({ data }) {
       <div className="flex justify-center">
         <div className="w-[1170px] content">
           <div className="grid grid-cols-12 gap-1">
-            <div className="col-span-9">
+            <div className="sm:col-span-9 col-span-12">
               <div className="sever-movie p-4">
                 <span></span>
                 <span className="server-name dark:bg-black bg-slate-300 text-black dark:text-yellow-500">
@@ -61,7 +60,7 @@ function Watch({ data }) {
                 </div>
               </div>
             </div>
-            <div className="col-span-3">
+            <div className="sm:col-span-3 col-span-12">
               <Sidebar />
             </div>
           </div>

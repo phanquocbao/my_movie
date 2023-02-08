@@ -42,7 +42,10 @@ function MovieDetail({ res }) {
   const handleAfterLoadThumb = (e) => {
     const fac = new FastAverageColor();
     const color = fac.getColor(e.target);
-    console.log("🚀 ~ file: MoveiDetail.js:45 ~ handleAfterLoadThumb ~ color", color)
+    console.log(
+      "🚀 ~ file: MoveiDetail.js:45 ~ handleAfterLoadThumb ~ color",
+      color
+    );
     setMainColor(color.hex);
   };
 
@@ -54,14 +57,14 @@ function MovieDetail({ res }) {
           backgroundImage: `URL(https://image.tmdb.org/t/p/original${res.backdrop_path})`,
         }}
       >
-        <div className="single  absolute z-0 top-[100px] left-[100px] right-[100px] bottom-[100px]">
+        <div className="single absolute z-0 sm:top-[100px] sm:left-[100px] sm:right-[100px] sm:bottom-[100px]">
           <div className="flex justify-center">
-            <div className="w-[1170px] main-content">
-              <div className="original_header flex ">
-                <div className="poster-wrapper max-w-[300px] max-h-[450px]">
+            <div className="sm:w-[1170px] main-content">
+              <div className="original_header sm:flex grid grid-cols-1">
+                <div className="poster-wrapper sm:max-w-[300px] sm:max-h-[450px]">
                   <div className="image_content w-full backdrop">
                     <img
-                      className="poster max-w-[300px]  max-h-[450px]"
+                      className="poster sm:max-w-[300px] sm:max-h-[450px]"
                       src={`https://image.tmdb.org/t/p/original${res.poster_path}`}
                       alt={res.original_title}
                       onLoad={handleAfterLoadThumb}
@@ -75,8 +78,59 @@ function MovieDetail({ res }) {
                       <img src="../../Assets/Images/bookmark-2.png" alt="" />
                     </div>
                   </div>
+                  
                 </div>
-                <div className="header_poster_wrapper pl-[40px] sm:flex hidden">
+                <div className="mobile_header_des sm:hidden block">
+                  <div className="title text-sm">
+                    <p className="10 text-white">
+                      <a href="/tv/36361-ulice" className="font-bold">
+                        {res.original_title}
+                      </a>
+                      <span className="tag release_date">(2005)</span>
+                    </p>
+
+                    <div className="facts flex text-sm justify-start">
+                      <span className="genres mr-4">
+                        {res.genres.map((list) => (
+                          <a className="mr-2" href="#/">
+                            {`${list.name} |`}
+                          </a>
+                        ))}
+                      </span>
+                      <span className="runtime mr-4">
+                        Runtime : {res.runtime}'
+                      </span>
+                    </div>
+                  </div>
+                  <div className="action-watch-box">
+                    <div className="button-watch">
+                      <Link
+                        className="episode-movie text-sm"
+                        to={{
+                          pathname: `/movie/${res.id}/watchmovie`,
+                          state: { fromDashboard: true },
+                        }}
+                      >
+                        <FontAwesomeIcon icon={faAngleDown} /> Tập phim
+                      </Link>
+                      <Link
+                        className="watch-movie text-sm"
+                        to={{
+                          pathname: `/movie/${res.id}/watchmovie`,
+                          state: { fromDashboard: true },
+                        }}
+                      >
+                        <FontAwesomeIcon icon={faPlay} /> Xem phim
+                      </Link>
+                      {/* <div
+                          className="w-6 h-6 "
+                          style={{ backgroundColor: mainColor }}
+                        >
+                        </div> */}
+                    </div>
+                  </div>
+                </div>        
+                <div className="header_poster_wrapper sm:pl-[40px] sm:flex hidden">
                   <div className="Header poster">
                     <div className="title ">
                       <h2 className="10 text-white">
@@ -110,7 +164,7 @@ function MovieDetail({ res }) {
                     <div className="action-watch-box">
                       <div className="button-watch">
                         <Link
-                          className="episode-movie"
+                          className="episode-movie text-lg"
                           to={{
                             pathname: `/movie/${res.id}/watchmovie`,
                             state: { fromDashboard: true },
@@ -119,7 +173,7 @@ function MovieDetail({ res }) {
                           <FontAwesomeIcon icon={faAngleDown} /> Tập phim
                         </Link>
                         <Link
-                          className="watch-movie"
+                          className="watch-movie text-lg"
                           to={{
                             pathname: `/movie/${res.id}/watchmovie`,
                             state: { fromDashboard: true },
@@ -127,11 +181,11 @@ function MovieDetail({ res }) {
                         >
                           <FontAwesomeIcon icon={faPlay} /> Xem phim
                         </Link>
-                        <div
+                        {/* <div
                           className="w-6 h-6 "
                           style={{ backgroundColor: mainColor }}
                         >
-                        </div>
+                        </div> */}
                       </div>
                     </div>
                     <div className="rating">
@@ -165,10 +219,12 @@ function MovieDetail({ res }) {
                   </div>
                 </div>
               </div>
+              
             </div>
           </div>
         </div>
       </div>
+      
       <div className="flex justify-center">
         <div className="w-[1170px] content">
           <div className="grid grid-cols-12 gap-1">
