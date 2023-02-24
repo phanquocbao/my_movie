@@ -1,4 +1,6 @@
 ```
+up git lên
+\\\\
 git status
 
 git add .
@@ -9,7 +11,9 @@ git push origin master
 
 ```
 
-
+Tải git \\\
 ```
 git pull
+
+git pull origin master
 ```
