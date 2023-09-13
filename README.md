@@ -1,3 +1,5 @@
+Clone git 
+git clone [url respo]
 ```
 up git lên
 \\\\
